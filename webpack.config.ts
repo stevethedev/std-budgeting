@@ -1,10 +1,8 @@
-// Generated using webpack-cli https://github.com/webpack/webpack-cli
-
 import path from "path";
-import HtmlWebpackPlugin from "html-webpack-plugin";
 import WorkboxWebpackPlugin from "workbox-webpack-plugin";
 import { Configuration, WebpackOptionsNormalized } from "webpack";
 import { merge } from "webpack-merge";
+import fs from "fs";
 
 const stylesHandler = "style-loader";
 
@@ -12,22 +10,48 @@ interface WebpackConfig extends Configuration {
   devServer?: WebpackOptionsNormalized["devServer"];
 }
 
+const getEntries = (): WebpackConfig["entry"] => {
+  const packagesDir = path.resolve(".", "packages");
+  return fs
+    .readdirSync(packagesDir)
+    .map((found) => ({ name: found, dir: path.resolve(packagesDir, found) }))
+    .filter(({ dir }) => fs.existsSync(dir))
+    .filter(({ dir }) => fs.statSync(dir).isDirectory())
+    .map(({ name, dir }) => ({
+      name,
+      dir,
+      packageJson: JSON.parse(
+        fs.readFileSync(path.resolve(dir, "package.json"), "utf-8"),
+      ),
+    }))
+    .map(({ name, dir, packageJson }) => {
+      const main = packageJson.main ?? path.join("src", "index.ts");
+      return {
+        name: packageJson.name ?? name,
+        main: path.resolve(dir, main),
+      };
+    })
+    .reduce(
+      (acc, { name, main }) => ({
+        ...acc,
+        [name]: main,
+      }),
+      {},
+    );
+};
+
 const getConfig = (overrides: Partial<WebpackConfig>): WebpackConfig =>
   merge(
     {
-      entry: "./src/index.ts",
+      entry: getEntries(),
       output: {
-        path: path.resolve(__dirname, "dist"),
+        path: path.resolve(".", "dist"),
       },
       devServer: {
         open: true,
         host: "localhost",
       },
       plugins: [
-        new HtmlWebpackPlugin({
-          template: "index.html",
-        }),
-
         // Add your plugins here
         // Learn more about plugins from https://webpack.js.org/configuration/plugins/
       ],
