@@ -1,5 +1,7 @@
 {
   "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "noImplicitAny": true,
     "target": "es2016",
     "module": "esnext",
     "esModuleInterop": true,
