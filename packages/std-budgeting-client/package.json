@@ -1,0 +1,15 @@
+{
+  "name": "std-budgeting-client",
+  "version": "0.0.0",
+  "description": "Web-client for the std-budgeting project",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Steven Jimenez",
+      "email": "stevenmjimenez@gmail.com"
+    }
+  ],
+  "jest": {
+    "testEnvironment": "jsdom"
+  }
+}

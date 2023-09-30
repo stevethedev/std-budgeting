@@ -1,0 +1,12 @@
+{
+  "name": "std-budgeting-server",
+  "version": "0.0.0",
+  "description": "The backend server for the std-budgeting app",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Steven Jimenez",
+      "email": "stevenmjimenez@gmail.com"
+    }
+  ]
+}

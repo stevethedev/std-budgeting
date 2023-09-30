@@ -1,0 +1,12 @@
+{
+  "name": "std-budgeting-electron",
+  "version": "0.0.0",
+  "description": "Electron system for std-budgeting project",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Steven Jimenez",
+      "email": "stevenmjimenez@gmail.com"
+    }
+  ]
+}
