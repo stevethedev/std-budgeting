@@ -1,6 +1,9 @@
 {
   "name": "std-budgeting",
   "version": "0.0.0",
+  "workspaces": [
+    "packages/*"
+  ],
   "devDependencies": {
     "@changesets/cli": "^2.26.2",
     "jest": "^29.7.0",
