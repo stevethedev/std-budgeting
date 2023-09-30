@@ -4,6 +4,7 @@
     "noImplicitAny": true,
     "target": "es2016",
     "module": "esnext",
+    "moduleResolution": "nodenext",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "strict": true,
