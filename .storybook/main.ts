@@ -31,7 +31,7 @@ const config: StorybookConfig = {
     config.module = config.module || {};
     config.module.rules = config.module.rules || [];
     config.module.rules.push({
-      test: /\.(ts|tsx)$/,
+      test: /\.[jt]sx?$/,
       use: [
         {
           loader: require.resolve("ts-loader"),
