@@ -1,0 +1,8 @@
+@mixin block {
+  --block--flex-direction: column;
+  --block--gap: 0;
+
+  display: flex;
+  flex-direction: var(--block--flex-direction);
+  gap: var(--block--gap);
+}
