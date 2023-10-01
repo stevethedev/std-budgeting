@@ -13,6 +13,7 @@
     dispatch("press", e);
   };
 
+  let className: string;
   $: className = ["button", className].join(" ");
 </script>
 
