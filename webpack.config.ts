@@ -1,6 +1,6 @@
 import path from "path";
 import WorkboxWebpackPlugin from "workbox-webpack-plugin";
-import { Configuration, WebpackOptionsNormalized } from "webpack";
+import type { Configuration, WebpackOptionsNormalized } from "webpack";
 import { merge } from "webpack-merge";
 import fs from "fs";
 

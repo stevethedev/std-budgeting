@@ -1,14 +1,10 @@
 {
+  "extends": "@tsconfig/svelte/tsconfig.json",
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
     "noImplicitAny": true,
-    "target": "es2016",
-    "module": "NodeNext",
-    "moduleResolution": "NodeNext",
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-    "strict": true,
-    "skipLibCheck": true
+    "allowJs": true,
+    "lib": ["DOM"]
   },
-  "include": ["packages/**/*"]
+  "include": ["packages/**/*", "stories/**/*"]
 }
