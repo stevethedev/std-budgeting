@@ -170,7 +170,7 @@
   --theme--color--form-placeholder-info: var(--theme--color--cyan-600);
 
   --theme--color--form-background: var(--theme--color--white);
-  --theme--color--form-backround-disabled: var(--theme--color--gray-100);
+  --theme--color--form-background-disabled: var(--theme--color--gray-100);
   --theme--color--form-background-focus: var(--theme--color--white);
   --theme--color--form-background-selected: var(--theme--color--gray-100);
   --theme--color--form-background-danger: var(--theme--color--red-100);
@@ -196,10 +196,32 @@
 
   --theme--color--form-input-text: var(--theme--color--gray-900);
   --theme--color--form-input-text-disabled: var(--theme--color--gray-600);
+  --theme--color--form-input-text-focus: var(--theme--color--gray-900);
+  --theme--color--form-input-text-selected: var(--theme--color--gray-900);
   --theme--color--form-input-text-danger: var(--theme--color--red-900);
   --theme--color--form-input-text-success: var(--theme--color--green-900);
   --theme--color--form-input-text-warning: var(--theme--color--yellow-900);
   --theme--color--form-input-text-info: var(--theme--color--cyan-900);
+
+  --theme--color--form-input-border: var(--theme--color--gray-300);
+  --theme--color--form-input-border-disabled: var(--theme--color--gray-300);
+  --theme--color--form-input-border-focus: var(--theme--color--blue-500);
+  --theme--color--form-input-border-selected: var(--theme--color--gray-300);
+  --theme--color--form-input-border-danger: var(--theme--color--red-500);
+  --theme--color--form-input-border-success: var(--theme--color--green-500);
+  --theme--color--form-input-border-warning: var(--theme--color--yellow-500);
+  --theme--color--form-input-border-info: var(--theme--color--cyan-500);
+
+  --theme--color--form-input-background: var(--theme--color--white);
+  --theme--color--form-input-background-hover: var(--theme--color--white);
+  --theme--color--form-input-background-focus: var(--theme--color--white);
+  --theme--color--form-input-background-selected: var(--theme--color--white);
+  --theme--color--form-input-background-danger: var(--theme--color--red-100);
+  --theme--color--form-input-background-success: var(--theme--color--green-100);
+  --theme--color--form-input-background-warning: var(
+    --theme--color--yellow-100
+  );
+  --theme--color--form-input-background-info: var(--theme--color--cyan-100);
 
   --theme--color--form-helper-text: var(--theme--color--gray-600);
   --theme--color--form-helper-text-disabled: var(--theme--color--gray-600);

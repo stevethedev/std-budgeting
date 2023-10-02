@@ -1,0 +1,49 @@
+@import "../../styles/layout.scss";
+
+.input {
+  @include block;
+
+  appearance: none;
+  outline: none;
+  white-space: nowrap;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--theme--padding--2);
+  transition:
+    background-color var(--theme--timing--instantaneous) ease-in-out,
+    color var(--theme--timing--instantaneous) ease-in-out,
+    border-color var(--theme--timing--instantaneous) ease-in-out,
+    box-shadow var(--theme--timing--instantaneous) ease-in-out;
+  border-radius: var(--theme--size--border-radius);
+
+  border: 1px solid var(--theme--color--form-input-border);
+  color: var(--theme--color--form-input-text);
+  background-color: var(--theme--color--form-input-background);
+  box-shadow: 0 0 0 var(--theme--size--0)
+    var(--theme--color--form-input-border-focus);
+  font-size: var(--theme--font-size--form-input);
+
+  &:hover {
+    background-color: var(--theme--color--form-input-background-hover);
+    color: var(--theme--color--form-input-text-hover);
+    border-color: var(--theme--color--form-input-border-hover);
+  }
+
+  &:focus {
+    outline: none;
+
+    background-color: var(--theme--color--form-background-focus);
+    color: var(--theme--color--form-input-text-focus);
+    border-color: var(--theme--color--form-input-border-focus);
+    box-shadow: 0 0 0 var(--theme--size--1)
+      var(--theme--color--form-input-border-focus);
+  }
+
+  &:active {
+    background-color: var(--theme--color--form-background-active);
+    color: var(--theme--color--form-text-active);
+    border-color: var(--theme--color--form-input-border-active);
+  }
+}
