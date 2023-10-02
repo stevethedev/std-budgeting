@@ -1,12 +1,11 @@
-import type { Meta, StoryFn } from "@storybook/svelte";
-import { action } from "@storybook/addon-actions";
+import type { Meta, StoryObj } from "@storybook/react";
 import { Button, Variant } from ".";
 
 export default {
   title: "Component/Button",
   component: Button,
   args: {
-    label: "Button",
+    children: "Button",
   },
   argTypes: {
     label: {
@@ -19,14 +18,8 @@ export default {
       options: Variant,
     },
   },
-} satisfies Meta<Button>;
+} satisfies Meta<typeof Button>;
 
-const Template: StoryFn<Button> = (args) => ({
-  Component: Button,
-  props: args,
-  on: {
-    press: action("press"),
-  },
-});
-
-export const Default = Template.bind({});
+export const Default: StoryObj = {
+  name: "Button",
+};

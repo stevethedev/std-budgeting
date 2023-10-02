@@ -1,7 +1,6 @@
-import type { StorybookConfig } from "@storybook/svelte-webpack5";
-
+import type { StorybookConfig } from "@storybook/react-webpack5";
 import { dirname, join } from "path";
-import sveltePreprocess from "svelte-preprocess";
+import webpackConfig from "../webpack.config";
 
 /**
  * This function is used to resolve the absolute path of a package.
@@ -12,7 +11,7 @@ function getAbsolutePath(value: string): any {
 }
 
 const config: StorybookConfig = {
-  stories: ["../packages/**/*.stories.@(js|jsx|ts|tsx|svelte)"],
+  stories: ["../packages/**/*.stories.@(js|jsx|ts|tsx)"],
   addons: [
     getAbsolutePath("@storybook/addon-links"),
     getAbsolutePath("@storybook/addon-essentials"),
@@ -20,29 +19,24 @@ const config: StorybookConfig = {
     getAbsolutePath("@storybook/addon-a11y"),
   ],
   framework: {
-    name: getAbsolutePath("@storybook/svelte-webpack5"),
+    name: getAbsolutePath("@storybook/react-webpack5"),
     options: {
-      preprocess: sveltePreprocess(),
+      strictMode: true,
     },
   },
   docs: {
     autodocs: "tag",
   },
   webpackFinal: async (config) => {
+    const cfg = webpackConfig();
+
     config.module = config.module || {};
     config.module.rules = config.module.rules || [];
-    config.module.rules.push({
-      test: /\.[jt]sx?$/,
-      use: [
-        {
-          loader: require.resolve("ts-loader"),
-        },
-      ],
-    });
+    config.module.rules.push(...cfg.module.rules);
 
     config.resolve = config.resolve || {};
     config.resolve.extensions = config.resolve.extensions || [];
-    config.resolve.extensions.push(".ts", ".tsx", ".svelte");
+    config.resolve.extensions.push(...cfg.resolve.extensions);
 
     return config;
   },

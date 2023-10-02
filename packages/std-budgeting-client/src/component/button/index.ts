@@ -1,4 +1,2 @@
-import Button from "./button.svelte";
-import { Variant } from "./variants";
-
-export { Button, Variant };
+export { Button } from "./button";
+export { Variant } from "./variants";
