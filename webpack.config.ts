@@ -1,13 +1,19 @@
 import path from "path";
 import WorkboxWebpackPlugin from "workbox-webpack-plugin";
-import type { Configuration, WebpackOptionsNormalized } from "webpack";
+import type {
+  Configuration,
+  RuleSetUseItem,
+  WebpackOptionsNormalized,
+} from "webpack";
 import { merge } from "webpack-merge";
 import fs from "fs";
 
-const stylesHandler = "style-loader";
-
 interface WebpackConfig extends Configuration {
   devServer?: WebpackOptionsNormalized["devServer"];
+}
+
+interface ReferenceDict {
+  styleLoader: RuleSetUseItem;
 }
 
 const getEntries = (): WebpackConfig["entry"] => {
@@ -40,7 +46,10 @@ const getEntries = (): WebpackConfig["entry"] => {
     );
 };
 
-const getConfig = (overrides: Partial<WebpackConfig>): WebpackConfig =>
+const getConfig = (
+  overrides: Partial<WebpackConfig>,
+  ref: ReferenceDict,
+): WebpackConfig =>
   merge(
     {
       entry: getEntries(),
@@ -63,24 +72,31 @@ const getConfig = (overrides: Partial<WebpackConfig>): WebpackConfig =>
             exclude: ["/node_modules/"],
           },
           {
-            test: /\.css$/i,
-            use: [stylesHandler, "css-loader"],
+            test: /\.module\.scss$/,
+            use: [
+              ref.styleLoader,
+              {
+                loader: "css-loader",
+                options: {
+                  modules: true,
+                },
+              },
+              "sass-loader",
+            ],
           },
           {
-            test: /\.s[ac]ss$/i,
-            use: [stylesHandler, "css-loader", "sass-loader"],
+            test: /\.scss$/,
+            exclude: /\.module\.scss$/,
+            use: [ref.styleLoader, "css-loader", "sass-loader"],
           },
           {
             test: /\.(eot|svg|ttf|woff|woff2|png|jpg|gif)$/i,
             type: "asset",
           },
-
-          // Add your rules for custom modules here
-          // Learn more about loaders from https://webpack.js.org/loaders/
         ],
       },
       resolve: {
-        extensions: [".tsx", ".ts", ".jsx", ".js", ".json"],
+        extensions: [".tsx", ".ts", ".jsx", ".js", ".json", ".scss"],
       },
     },
     overrides,
@@ -89,8 +105,14 @@ const getConfig = (overrides: Partial<WebpackConfig>): WebpackConfig =>
 export default () => {
   const isProduction = process.env.NODE_ENV == "production";
 
-  const mode = isProduction ? "production" : "development";
-  const plugins = isProduction ? [new WorkboxWebpackPlugin.GenerateSW()] : [];
+  const overrides: Partial<WebpackConfig> = {
+    mode: isProduction ? "production" : "development",
+    plugins: isProduction ? [new WorkboxWebpackPlugin.GenerateSW()] : [],
+  };
 
-  return getConfig({ mode, plugins });
+  const dict: ReferenceDict = {
+    styleLoader: "style-loader",
+  };
+
+  return getConfig(overrides, dict);
 };

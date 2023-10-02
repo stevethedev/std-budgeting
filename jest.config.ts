@@ -1,25 +1,23 @@
-import type { Config } from "@jest/types"; // Sync object
-import fs from "fs";
-import path from "path";
+import type { Config } from "@jest/types";
+import { existsSync, readdirSync, readFileSync, statSync } from "fs";
+import { resolve } from "path";
 
 const getPackageDir = (...name: string[]): string =>
-  path.resolve(".", "packages", ...name);
-const toJestDir = (p: string): string =>
-  p.replace(path.resolve("."), "<rootDir>");
+  resolve(".", "packages", ...name);
+const toJestDir = (p: string): string => p.replace(resolve("."), "<rootDir>");
 
 const getProjects = (): Config.InitialProjectOptions[] => {
   const packageDir = getPackageDir();
-  return fs
-    .readdirSync(packageDir)
+  return readdirSync(packageDir)
     .map((found) => ({
       name: found,
       dir: getPackageDir(found),
     }))
-    .filter(({ dir }) => fs.existsSync(dir))
-    .filter(({ dir }) => fs.statSync(dir).isDirectory())
+    .filter(({ dir }) => existsSync(dir))
+    .filter(({ dir }) => statSync(dir).isDirectory())
     .map(({ name }) => {
       const packageJson = JSON.parse(
-        fs.readFileSync(getPackageDir(name, "package.json"), "utf-8"),
+        readFileSync(getPackageDir(name, "package.json"), "utf-8"),
       );
 
       return {
@@ -27,6 +25,10 @@ const getProjects = (): Config.InitialProjectOptions[] => {
         testEnvironment: packageJson.jest?.testEnvironment ?? "node",
         transform: {
           "^.+\\.tsx?$": "ts-jest",
+        },
+        moduleNameMapper: {
+          "\\.(css|less|scss|sss|styl)$":
+            "<rootDir>/node_modules/jest-css-modules",
         },
         testMatch: [
           toJestDir(getPackageDir(name, "src", "**", "*.test.ts")),

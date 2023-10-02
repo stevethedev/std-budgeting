@@ -1,1 +1,2 @@
-export { default as Theme } from "./default.svelte";
+export { Theme } from "./default";
+export { theme } from "./default.module.scss";
