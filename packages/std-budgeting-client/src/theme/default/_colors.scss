@@ -111,6 +111,7 @@
   --theme--color--button-background-focus: var(--theme--color--gray-300);
   --theme--color--button-text: var(--theme--color--gray-900);
   --theme--color--button-text-hover: var(--theme--color--gray-900);
+  --theme--color--button-border-focus: var(--theme--color--gray-300);
 
   --theme--color--button-background-disabled: var(--theme--color--gray-300);
   --theme--color--button-text-disabled: var(--theme--color--gray-600);
@@ -121,6 +122,7 @@
   --theme--color--ghost-border-hover: var(--theme--color--gray-300);
   --theme--color--ghost-text: var(--theme--color--gray-900);
   --theme--color--ghost-text-hover: var(--theme--color--gray-900);
+  --theme--color--ghost-border-focus: var(--theme--color--gray-300);
 
   --theme--color--primary-background: var(--theme--color--blue-900);
   --theme--color--primary-background-hover: var(--theme--color--blue-500);
@@ -129,6 +131,7 @@
   --theme--color--primary-text: var(--theme--color--white);
   --theme--color--primary-text-hover: var(--theme--color--white);
   --theme--color--primary-text-disabled: var(--theme--color--blue-200);
+  --theme--color--primary-border-focus: var(--theme--color--blue-500);
 
   --theme--color--danger-background: var(--theme--color--red-900);
   --theme--color--danger-background-hover: var(--theme--color--red-500);
@@ -136,6 +139,7 @@
   --theme--color--danger-background-disabled: var(--theme--color--red-300);
   --theme--color--danger-text: var(--theme--color--white);
   --theme--color--danger-text-disabled: var(--theme--color--white);
+  --theme--color--danger-border-focus: var(--theme--color--red-500);
 
   --theme--color--success-background: var(--theme--color--green-900);
   --theme--color--success-background-hover: var(--theme--color--green-500);
@@ -143,6 +147,7 @@
   --theme--color--success-background-disabled: var(--theme--color--green-300);
   --theme--color--success-text: var(--theme--color--white);
   --theme--color--success-text-disabled: var(--theme--color--white);
+  --theme--color--success-border-focus: var(--theme--color--green-500);
 
   --theme--color--warning-background: var(--theme--color--yellow-900);
   --theme--color--warning-background-hover: var(--theme--color--yellow-500);
@@ -150,6 +155,7 @@
   --theme--color--warning-background-disabled: var(--theme--color--yellow-300);
   --theme--color--warning-text: var(--theme--color--white);
   --theme--color--warning-text-disabled: var(--theme--color--white);
+  --theme--color--warning-border-focus: var(--theme--color--yellow-500);
 
   --theme--color--info-background: var(--theme--color--cyan-900);
   --theme--color--info-background-hover: var(--theme--color--cyan-500);
@@ -157,6 +163,7 @@
   --theme--color--info-background-disabled: var(--theme--color--cyan-300);
   --theme--color--info-text: var(--theme--color--white);
   --theme--color--info-text-disabled: var(--theme--color--white);
+  --theme--color--info-border-focus: var(--theme--color--cyan-500);
 
   // Form Colors
 
