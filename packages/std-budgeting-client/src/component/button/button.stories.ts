@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { Button, Variant } from ".";
+import { Button } from ".";
 import { action } from "@storybook/addon-actions";
+import { Variant } from "./variants";
 
 export default {
   title: "Component/Button",
@@ -10,7 +11,7 @@ export default {
     onPress: action("onPress"),
   },
   argTypes: {
-    label: {
+    title: {
       control: "text",
       description:
         "Sets the button's default text, if the default slot is not filled in.",
