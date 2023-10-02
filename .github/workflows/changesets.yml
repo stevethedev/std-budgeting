@@ -19,3 +19,8 @@ jobs:
 
       - name: Check for changesets
         run: npx changeset status --since=main
+
+      - name: Create Release Pull Request
+        uses: changesets/action@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
