@@ -1,0 +1,11 @@
+@mixin theme-font-family {
+  --theme--font-family--sans-serif: -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue",
+    sans-serif;
+  --theme--font-family--monospace: Menlo, Monaco, Consolas, "Liberation Mono",
+    "Courier New", monospace;
+
+  --theme--font-family--heading: var(--theme--font-family--sans-serif);
+  --theme--font-family--body: var(--theme--font-family--sans-serif);
+  --theme--font-family--code: var(--theme--font-family--monospace);
+}

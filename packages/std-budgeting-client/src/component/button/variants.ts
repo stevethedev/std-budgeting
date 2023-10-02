@@ -4,4 +4,6 @@ export enum Variant {
   Ghost = "ghost",
   Danger = "danger",
   Success = "success",
+  Warning = "warning",
+  Info = "info",
 }

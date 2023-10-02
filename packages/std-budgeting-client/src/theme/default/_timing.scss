@@ -1,0 +1,17 @@
+@mixin theme-timing {
+  --theme--timing--1: 0.1s;
+  --theme--timing--2: 0.2s;
+  --theme--timing--3: 0.3s;
+  --theme--timing--4: 0.4s;
+  --theme--timing--5: 0.5s;
+  --theme--timing--6: 0.6s;
+  --theme--timing--7: 0.7s;
+  --theme--timing--8: 0.8s;
+  --theme--timing--9: 0.9s;
+  --theme--timing--10: 1s;
+
+  --theme--timing--instantaneous: var(--theme--timing--1);
+  --theme--timing--fast: var(--theme--timing--2);
+  --theme--timing--medium: var(--theme--timing--5);
+  --theme--timing--slow: var(--theme--timing--8);
+}

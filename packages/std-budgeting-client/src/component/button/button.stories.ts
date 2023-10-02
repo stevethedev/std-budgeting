@@ -1,11 +1,13 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Button, Variant } from ".";
+import { action } from "@storybook/addon-actions";
 
 export default {
   title: "Component/Button",
   component: Button,
   args: {
     children: "Button",
+    onPress: action("onPress"),
   },
   argTypes: {
     label: {
