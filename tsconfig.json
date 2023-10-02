@@ -1,10 +1,34 @@
 {
-  "extends": "@tsconfig/svelte/tsconfig.json",
+  "$schema": "https://json.schemastore.org/tsconfig",
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
     "noImplicitAny": true,
     "allowJs": true,
-    "lib": ["DOM"]
+    "jsx": "react-jsx",
+    "outDir": "build/dist",
+    "module": "NodeNext",
+    "target": "ESNext",
+    "sourceMap": true,
+    "moduleResolution": "NodeNext",
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "strictNullChecks": true,
+    "lib": ["DOM"],
+    "plugins": [
+      {
+        "name": "typescript-plugin-css-modules",
+        "options": {
+          "customMatcher": "\\.module\\.scss$"
+        }
+      }
+    ]
   },
-  "include": ["packages/**/*", "stories/**/*"]
+  "include": [
+    "packages/**/*.ts",
+    "packages/**/*.tsx",
+    "packages/**/*.module.scss",
+    "types/**/*.d.ts",
+    "./webpack.config.ts",
+    "./jest.config.ts"
+  ]
 }
