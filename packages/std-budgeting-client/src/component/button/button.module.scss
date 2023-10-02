@@ -1,88 +1,110 @@
 @import "../../styles/layout.scss";
 
-.button {
-  @include block;
-
-  --button-color--neutral: var(--theme--color--gray-400);
-  --button-color--hover: var(--theme--color--gray-300);
-  --button-color--active: var(--theme--color--gray-200);
-  --button-color--focus: var(--theme--color--gray-400);
-  --button-color--disabled: var(--theme--color--gray-600);
-  --button-color--foreground: var(--theme--color--gray-900);
-
-  box-sizing: border-box;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.5rem 1rem;
-  border: none;
-  border-radius: 0.25rem;
-  cursor: var(--button-cursor, pointer);
-  transition: background-color 0.2s ease-in-out;
-  background-color: var(--button-color--neutral);
-  color: var(--button-color--foreground);
+@mixin button-variant($color) {
+  background-color: var(
+    --theme--color--#{$color}-background,
+    var(--theme--color--button-background)
+  );
+  color: var(--theme--color--#{$color}-text, var(--theme--color--button-text));
+  border: 1px solid
+    var(--theme--color--#{$color}-border, var(--theme--color--button-border));
 
   &:hover {
-    background-color: var(--button-color--hover);
+    background-color: var(
+      --theme--color--#{$color}-background-hover,
+      var(--theme--color--button-background-hover)
+    );
+    color: var(
+      --theme--color--#{$color}-text-hover,
+      var(--theme--color--button-text-hover)
+    );
   }
 
   &:focus {
-    background-color: var(--button-color--focus);
+    background-color: var(
+      --theme--color--#{$color}-background-focus,
+      var(--theme--color--button-background-focus)
+    );
+  }
+
+  &:active {
+    background-color: var(
+      --theme--color--#{$color}-background-focus,
+      var(--theme--color--button-background-focus)
+    );
+  }
+
+  &:disabled {
+    background-color: var(
+      --theme--color--#{$color}-background-disabled,
+      var(--theme--color--button-background-disabled)
+    );
+    color: var(
+      --theme--color--#{$color}-text-disabled,
+      var(--theme--color--button-text-disabled)
+    );
+  }
+}
+
+.button {
+  @include block;
+
+  appearance: none;
+  outline: none;
+  border: none;
+  user-select: none;
+  cursor: pointer;
+  white-space: nowrap;
+
+  border-radius: var(--theme--size--border-radius);
+  transition: background-color var(--theme--timing--fast) ease-in-out;
+  line-height: var(--theme--line-height--body);
+  font-family: var(--theme--font-family--body);
+  font-size: var(--theme--font-size--body);
+  font-weight: var(--theme--font-weight--body);
+  padding: var(--theme--padding--button);
+
+  background-color: var(--theme--color--button-background);
+  color: var(--theme--color--button-text);
+
+  &:hover {
+    background-color: var(--theme--color--button-background-hover);
+    color: var(--theme--color--button-text-hover);
+  }
+
+  &:focus {
     outline: none;
     box-shadow: 0 0 0 0.25rem rgba(0, 0, 0, 0.25);
   }
 
-  &:active {
-    background-color: var(--button-color--active);
-  }
-
   &:disabled {
-    --button-cursor: not-allowed;
-
-    background-color: var(--button-color--disabled);
-    color: var(
-      --button-color--foreground-disabled,
-      var(--button-color--foreground)
-    );
+    cursor: not-allowed;
     opacity: 0.8;
   }
 
+  @include button-variant(button);
+
   &.primary {
-    --button-color--neutral: var(--theme--color--blue-900);
-    --button-color--hover: var(--theme--color--blue-700);
-    --button-color--active: var(--theme--color--blue-600);
-    --button-color--focus: var(--theme--color--blue-600);
-    --button-color--disabled: var(--theme--color--blue-700);
-    --button-color--foreground: var(--theme--color--white);
-    --button-color--foreground-disabled: var(--theme--color--blue-200);
+    @include button-variant(primary);
   }
 
   &.ghost {
-    --button-color--neutral: transparent;
-    --button-color--hover: var(--theme--color--gray-300);
-    --button-color--active: var(--theme--color--gray-200);
-    --button-color--focus: var(--theme--color--gray-400);
-    --button-color--disabled: var(--theme--color--gray-600);
-    --button-color--foreground: var(--theme--color--gray-900);
+    @include button-variant(ghost);
   }
 
   &.danger {
-    --button-color--neutral: var(--theme--color--red-900);
-    --button-color--hover: var(--theme--color--red-700);
-    --button-color--active: var(--theme--color--red-600);
-    --button-color--focus: var(--theme--color--red-600);
-    --button-color--disabled: var(--theme--color--red-700);
-    --button-color--foreground: var(--theme--color--white);
-    --button-color--foreground-disabled: var(--theme--color--red-200);
+    @include button-variant(danger);
   }
 
   &.success {
-    --button-color--neutral: var(--theme--color--green-900);
-    --button-color--hover: var(--theme--color--green-700);
-    --button-color--active: var(--theme--color--green-600);
-    --button-color--focus: var(--theme--color--green-600);
-    --button-color--disabled: var(--theme--color--green-700);
-    --button-color--foreground: var(--theme--color--white);
-    --button-color--foreground-disabled: var(--theme--color--green-200);
+    @include button-variant(success);
+  }
+
+  &.warning {
+    @include button-variant(warning);
+  }
+
+  &.info {
+    @include button-variant(info);
   }
 }

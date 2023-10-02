@@ -1,0 +1,218 @@
+@function interpolate-color($start, $end, $percentage) {
+  $r1: red($start);
+  $g1: green($start);
+  $b1: blue($start);
+
+  $r2: red($end);
+  $g2: green($end);
+  $b2: blue($end);
+
+  $r: round(($r2 - $r1) * $percentage / 100 + $r1);
+  $g: round(($g2 - $g1) * $percentage / 100 + $g1);
+  $b: round(($b2 - $b1) * $percentage / 100 + $b1);
+
+  @return rgb($r, $g, $b);
+}
+
+@mixin generate-colors($name, $start, $end, $steps: 9) {
+  @for $i from 1 through $steps {
+    $num: $i * 100;
+    $percentage: $i * 100 / $steps;
+    --theme--color--#{$name}-#{$num}: #{interpolate-color(
+        $start,
+        $end,
+        $percentage
+      )};
+  }
+}
+
+@mixin theme-colors {
+  @include generate-colors(red, #ffebee, #b71c1c);
+  @include generate-colors(orange, #fff3e0, #e65100);
+  @include generate-colors(yellow, #fff9c4, #a34c00);
+  @include generate-colors(green, #e8f5e9, #1b5e20);
+  @include generate-colors(blue, #e3f2fd, #0d47a1);
+  @include generate-colors(indigo, #e8eaf6, #1a237e);
+  @include generate-colors(violet, #f3e5f5, #4a148c);
+  @include generate-colors(pink, #fce4ec, #880e4f);
+  @include generate-colors(cyan, #e0f7fa, #006064);
+  @include generate-colors(magenta, #f8bbd0, #880e4f);
+
+  --theme--color--black: #000;
+  --theme--color--white: #fff;
+
+  @include generate-colors(gray, #fafafa, #212121);
+
+  --theme--color--white-100: rgba(255, 255, 255, 0.1);
+  --theme--color--white-200: rgba(255, 255, 255, 0.2);
+  --theme--color--white-300: rgba(255, 255, 255, 0.3);
+  --theme--color--white-400: rgba(255, 255, 255, 0.4);
+  --theme--color--white-500: rgba(255, 255, 255, 0.5);
+  --theme--color--white-600: rgba(255, 255, 255, 0.6);
+  --theme--color--white-700: rgba(255, 255, 255, 0.7);
+  --theme--color--white-800: rgba(255, 255, 255, 0.8);
+  --theme--color--white-900: rgba(255, 255, 255, 0.9);
+
+  --theme--color--black-100: rgba(0, 0, 0, 0.1);
+  --theme--color--black-200: rgba(0, 0, 0, 0.2);
+  --theme--color--black-300: rgba(0, 0, 0, 0.3);
+  --theme--color--black-400: rgba(0, 0, 0, 0.4);
+  --theme--color--black-500: rgba(0, 0, 0, 0.5);
+  --theme--color--black-600: rgba(0, 0, 0, 0.6);
+  --theme--color--black-700: rgba(0, 0, 0, 0.7);
+  --theme--color--black-800: rgba(0, 0, 0, 0.8);
+  --theme--color--black-900: rgba(0, 0, 0, 0.9);
+
+  --theme--color--transparent: transparent;
+
+  // Contextual Colors
+
+  --theme--color--primary: var(--theme--color--blue-500);
+  --theme--color--secondary: var(--theme--color--gray-600);
+  --theme--color--success: var(--theme--color--green-500);
+  --theme--color--info: var(--theme--color--cyan-500);
+  --theme--color--warning: var(--theme--color--yellow-500);
+  --theme--color--danger: var(--theme--color--red-500);
+  --theme--color--light: var(--theme--color--gray-100);
+  --theme--color--dark: var(--theme--color--gray-800);
+
+  // Text Colors
+
+  --theme--color--text-foreground: var(--theme--color--gray-900);
+  --theme--color--text-background: var(--theme--color--white);
+
+  --theme--color--text: var(--theme--color--gray-900);
+  --theme--color--text-danger: var(--theme--color--red-900);
+  --theme--color--text-light: var(--theme--color--gray-600);
+  --theme--color--text-success: var(--theme--color--green-900);
+  --theme--color--text-warning: var(--theme--color--yellow-900);
+
+  // Link Colors
+
+  --theme--color--link: var(--theme--color--blue-500);
+  --theme--color--link-hover: var(--theme--color--blue-600);
+
+  // Behavior Colors
+
+  --theme--color--focus: var(--theme--color--blue-500);
+  --theme--color--focus-danger: var(--theme--color--red-500);
+  --theme--color--focus-success: var(--theme--color--green-500);
+
+  // Panel Colors
+
+  --theme--color--bg-light: var(--theme--color--gray-300);
+  --theme--color--bg-lighter: var(--theme--color--gray-200);
+  --theme--color--bg-lightest: var(--theme--color--gray-100);
+
+  // Button Colors
+
+  --theme--color--button-background: var(--theme--color--gray-100);
+  --theme--color--button-background-hover: var(--theme--color--gray-300);
+  --theme--color--button-background-focus: var(--theme--color--gray-300);
+  --theme--color--button-text: var(--theme--color--gray-900);
+  --theme--color--button-text-hover: var(--theme--color--gray-900);
+
+  --theme--color--button-background-disabled: var(--theme--color--gray-300);
+  --theme--color--button-text-disabled: var(--theme--color--gray-600);
+
+  --theme--color--ghost-background: var(--theme--color--transparent);
+  --theme--color--ghost-background-hover: var(--theme--color--gray-300);
+  --theme--color--ghost-border: var(--theme--color--gray-300);
+  --theme--color--ghost-border-hover: var(--theme--color--gray-300);
+  --theme--color--ghost-text: var(--theme--color--gray-900);
+  --theme--color--ghost-text-hover: var(--theme--color--gray-900);
+
+  --theme--color--primary-background: var(--theme--color--blue-900);
+  --theme--color--primary-background-hover: var(--theme--color--blue-500);
+  --theme--color--primary-background-focus: var(--theme--color--blue-600);
+  --theme--color--primary-background-disabled: var(--theme--color--blue-300);
+  --theme--color--primary-text: var(--theme--color--white);
+  --theme--color--primary-text-hover: var(--theme--color--white);
+  --theme--color--primary-text-disabled: var(--theme--color--blue-200);
+
+  --theme--color--danger-background: var(--theme--color--red-900);
+  --theme--color--danger-background-hover: var(--theme--color--red-500);
+  --theme--color--danger-background-focus: var(--theme--color--red-600);
+  --theme--color--danger-background-disabled: var(--theme--color--red-300);
+  --theme--color--danger-text: var(--theme--color--white);
+  --theme--color--danger-text-disabled: var(--theme--color--white);
+
+  --theme--color--success-background: var(--theme--color--green-900);
+  --theme--color--success-background-hover: var(--theme--color--green-500);
+  --theme--color--success-background-focus: var(--theme--color--green-600);
+  --theme--color--success-background-disabled: var(--theme--color--green-300);
+  --theme--color--success-text: var(--theme--color--white);
+  --theme--color--success-text-disabled: var(--theme--color--white);
+
+  --theme--color--warning-background: var(--theme--color--yellow-900);
+  --theme--color--warning-background-hover: var(--theme--color--yellow-500);
+  --theme--color--warning-background-focus: var(--theme--color--yellow-600);
+  --theme--color--warning-background-disabled: var(--theme--color--yellow-300);
+  --theme--color--warning-text: var(--theme--color--white);
+  --theme--color--warning-text-disabled: var(--theme--color--white);
+
+  --theme--color--info-background: var(--theme--color--cyan-900);
+  --theme--color--info-background-hover: var(--theme--color--cyan-500);
+  --theme--color--info-background-focus: var(--theme--color--cyan-600);
+  --theme--color--info-background-disabled: var(--theme--color--cyan-300);
+  --theme--color--info-text: var(--theme--color--white);
+  --theme--color--info-text-disabled: var(--theme--color--white);
+
+  // Form Colors
+
+  --theme--color--form-text: var(--theme--color--gray-900);
+
+  --theme--color--form-placeholder: var(--theme--color--gray-600);
+  --theme--color--form-placeholder-disabled: var(--theme--color--gray-600);
+  --theme--color--form-placeholder-danger: var(--theme--color--red-600);
+  --theme--color--form-placeholder-success: var(--theme--color--green-600);
+  --theme--color--form-placeholder-warning: var(--theme--color--yellow-600);
+  --theme--color--form-placeholder-info: var(--theme--color--cyan-600);
+
+  --theme--color--form-background: var(--theme--color--white);
+  --theme--color--form-backround-disabled: var(--theme--color--gray-100);
+  --theme--color--form-background-focus: var(--theme--color--white);
+  --theme--color--form-background-selected: var(--theme--color--gray-100);
+  --theme--color--form-background-danger: var(--theme--color--red-100);
+  --theme--color--form-background-success: var(--theme--color--green-100);
+  --theme--color--form-background-warning: var(--theme--color--yellow-100);
+  --theme--color--form-background-info: var(--theme--color--cyan-100);
+
+  --theme--color--form-border: var(--theme--color--gray-300);
+  --theme--color--form-border-disabled: var(--theme--color--gray-300);
+  --theme--color--form-border-focus: var(--theme--color--blue-500);
+  --theme--color--form-border-selected: var(--theme--color--gray-300);
+  --theme--color--form-border-danger: var(--theme--color--red-500);
+  --theme--color--form-border-success: var(--theme--color--green-500);
+  --theme--color--form-border-warning: var(--theme--color--yellow-500);
+  --theme--color--form-border-info: var(--theme--color--cyan-500);
+
+  --theme--color--form-label-text: var(--theme--color--gray-900);
+  --theme--color--form-label-text-disabled: var(--theme--color--gray-600);
+  --theme--color--form-label-text-danger: var(--theme--color--red-900);
+  --theme--color--form-label-text-success: var(--theme--color--green-900);
+  --theme--color--form-label-text-warning: var(--theme--color--yellow-900);
+  --theme--color--form-label-text-info: var(--theme--color--cyan-900);
+
+  --theme--color--form-input-text: var(--theme--color--gray-900);
+  --theme--color--form-input-text-disabled: var(--theme--color--gray-600);
+  --theme--color--form-input-text-danger: var(--theme--color--red-900);
+  --theme--color--form-input-text-success: var(--theme--color--green-900);
+  --theme--color--form-input-text-warning: var(--theme--color--yellow-900);
+  --theme--color--form-input-text-info: var(--theme--color--cyan-900);
+
+  --theme--color--form-helper-text: var(--theme--color--gray-600);
+  --theme--color--form-helper-text-disabled: var(--theme--color--gray-600);
+  --theme--color--form-helper-text-danger: var(--theme--color--red-600);
+  --theme--color--form-helper-text-success: var(--theme--color--green-600);
+  --theme--color--form-helper-text-warning: var(--theme--color--yellow-600);
+  --theme--color--form-helper-text-info: var(--theme--color--cyan-600);
+
+  --theme--color--form-icons-fill: var(--theme--color--gray-600);
+  --theme--color--form-icons-fill-disabled: var(--theme--color--gray-600);
+  --theme--color--form-icons-fill-seleted: var(--theme--color--gray-600);
+  --theme--color--form-icons-fill-danger: var(--theme--color--red-600);
+  --theme--color--form-icons-fill-success: var(--theme--color--green-600);
+  --theme--color--form-icons-fill-warning: var(--theme--color--yellow-600);
+  --theme--color--form-icons-fill-info: var(--theme--color--cyan-600);
+}

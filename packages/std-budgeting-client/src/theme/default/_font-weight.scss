@@ -1,0 +1,18 @@
+@mixin theme-font-weight {
+  --theme--font-weight--1: 100;
+  --theme--font-weight--2: 200;
+  --theme--font-weight--3: 300;
+  --theme--font-weight--4: 400;
+  --theme--font-weight--5: 500;
+  --theme--font-weight--6: 600;
+  --theme--font-weight--7: 700;
+  --theme--font-weight--8: 800;
+  --theme--font-weight--9: 900;
+
+  --theme--font-weight--body: var(--theme--font-weight--4);
+  --theme--font-weight--heading: var(--theme--font-weight--5);
+
+  --theme--font-weight--light: var(--theme--font-weight--3);
+  --theme--font-weight--normal: var(--theme--font-weight--4);
+  --theme--font-weight--bold: var(--theme--font-weight--6);
+}

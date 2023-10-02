@@ -1,8 +1,10 @@
 @mixin block {
-  --block--flex-direction: column;
-  --block--gap: 0;
+  box-sizing: border-box;
 
   display: flex;
-  flex-direction: var(--block--flex-direction);
-  gap: var(--block--gap);
+  flex-direction: column;
+  gap: 0;
+
+  align-items: center;
+  justify-content: center;
 }

@@ -29,6 +29,8 @@ export const Button: FC<Props> = ({
     [styles.ghost]: variant === Variant.Ghost,
     [styles.primary]: variant === Variant.Primary,
     [styles.success]: variant === Variant.Success,
+    [styles.warning]: variant === Variant.Warning,
+    [styles.info]: variant === Variant.Info,
     [className]: Boolean(className),
   };
 

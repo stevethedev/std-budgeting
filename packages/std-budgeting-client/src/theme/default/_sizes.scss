@@ -1,0 +1,21 @@
+@mixin theme-sizes {
+  --theme--size--0: 0;
+  --theme--size--1: 0.25rem;
+  --theme--size--2: 0.5rem;
+  --theme--size--3: 0.75rem;
+  --theme--size--4: 1rem;
+  --theme--size--5: 1.25rem;
+  --theme--size--6: 1.5rem;
+  --theme--size--7: 1.75rem;
+  --theme--size--8: 2rem;
+  --theme--size--9: 2.25rem;
+  --theme--size--10: 2.5rem;
+  --theme--size--11: 2.75rem;
+  --theme--size--12: 3rem;
+  --theme--size--13: 3.25rem;
+  --theme--size--14: 3.5rem;
+  --theme--size--15: 3.75rem;
+  --theme--size--16: 4rem;
+
+  --theme--size--border-radius: var(--theme--size--1);
+}
