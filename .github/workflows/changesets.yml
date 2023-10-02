@@ -12,6 +12,9 @@ jobs:
         with:
           fetch-depth: 0
 
+      - if: ${{ github.event.pull_request.title != 'Version Packages' }}
+        run: git pull --force --no-tags origin main:main
+
       - uses: actions/setup-node@v3
         with:
           node-version: 18.x
