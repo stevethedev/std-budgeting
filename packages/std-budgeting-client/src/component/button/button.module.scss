@@ -25,6 +25,11 @@
       --theme--color--#{$color}-background-focus,
       var(--theme--color--button-background-focus)
     );
+    box-shadow: 0 0 0 var(--theme--size--1)
+      var(
+        --theme--color--#{$color}-border-focus,
+        var(--theme--color--button-border-focus)
+      );
   }
 
   &:active {
@@ -57,7 +62,13 @@
   white-space: nowrap;
 
   border-radius: var(--theme--size--border-radius);
-  transition: background-color var(--theme--timing--fast) ease-in-out;
+  transition:
+    background-color var(--theme--timing--instantaneous) ease-in-out,
+    color var(--theme--timing--instantaneous) ease-in-out,
+    border-color var(--theme--timing--instantaneous) ease-in-out,
+    box-shadow var(--theme--timing--instantaneous) ease-in-out;
+  box-shadow: 0 0 0 var(--theme--size--0)
+    var(--theme--color--form-input-border-focus);
   line-height: var(--theme--line-height--body);
   font-family: var(--theme--font-family--body);
   font-size: var(--theme--font-size--body);
@@ -74,7 +85,6 @@
 
   &:focus {
     outline: none;
-    box-shadow: 0 0 0 0.25rem rgba(0, 0, 0, 0.25);
   }
 
   &:disabled {
