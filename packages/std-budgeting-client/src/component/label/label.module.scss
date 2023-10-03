@@ -1,0 +1,15 @@
+@import "../../styles/layout";
+
+.label {
+  @include block;
+
+  margin: 0;
+  padding: 0;
+  border: 0;
+  align-items: start;
+
+  color: var(--theme--color--text);
+  font-size: var(--theme--font-size--label);
+  font-weight: var(--theme--font-weight--label);
+  line-height: var(--theme--line-height--label);
+}
