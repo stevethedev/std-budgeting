@@ -6,8 +6,12 @@ export default {
   component: Stack,
   args: {
     children: [
-      <div style={{ border: "1px solid" }}>First Box</div>,
-      <div style={{ border: "1px solid" }}>Second Box</div>,
+      <div key="first" style={{ border: "1px solid" }}>
+        First Box
+      </div>,
+      <div key="second" style={{ border: "1px solid" }}>
+        Second Box
+      </div>,
     ],
     isVertical: false,
     gap: 2,
