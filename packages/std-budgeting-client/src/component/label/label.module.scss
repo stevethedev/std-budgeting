@@ -7,6 +7,8 @@
   padding: 0;
   border: 0;
   align-items: start;
+  flex: 1 1 auto;
+  width: 100%;
 
   color: var(--theme--color--text);
   font-size: var(--theme--font-size--label);
