@@ -5,6 +5,7 @@ import {
   type ReactNode,
   type SetStateAction,
   useContext,
+  useMemo,
   useState,
 } from "react";
 
@@ -37,10 +38,13 @@ export const useStore = (): [
 
 export const Provider: FC<Props> = ({ children }) => {
   const [store, setStore] = useState<Store>({ name: "", age: 0 });
-  const storeContext: Context = {
-    store,
-    setStore,
-  };
+  const storeContext: Context = useMemo(
+    () => ({
+      store,
+      setStore,
+    }),
+    [store, setStore],
+  );
 
   return <Context.Provider value={storeContext}>{children}</Context.Provider>;
 };
