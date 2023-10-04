@@ -1,4 +1,4 @@
-import React, { type FC, type ReactNode } from "react";
+import React, { type FC, type ReactNode, useMemo } from "react";
 import { Variant } from "./variant";
 import { Props as StackProps, Stack } from "../stack";
 import style from "./list.module.scss";
@@ -23,6 +23,8 @@ export const List: FC<Props> = ({
   className,
   ...props
 }) => {
+  const keyMap = useMemo(() => new Map<ReactNode, string>(), []);
+
   const as = getTagName(variant);
   const classes = getClassName([
     className,
@@ -33,11 +35,21 @@ export const List: FC<Props> = ({
       [style.unstyled]: variant === Variant.Unstyled,
     },
   ]);
+
   return (
     <Stack as={as} className={classes} isVertical={isVertical} {...props}>
-      {children.map((child, index) => {
+      {children.map((child) => {
+        if (!child) {
+          return null;
+        }
+
+        if (!keyMap.has(child)) {
+          keyMap.set(child, Math.random().toString(36));
+        }
+        const key = keyMap.get(child);
+
         return (
-          <li className={style.item} key={`child-${index}`}>
+          <li className={style.item} key={key}>
             {child}
           </li>
         );
