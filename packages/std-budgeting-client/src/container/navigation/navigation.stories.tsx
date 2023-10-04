@@ -9,6 +9,13 @@ export default {
 export const Default: StoryObj<typeof Navigation> = {
   name: "Navigation",
   args: {
-    children: [<a href="#">Foo</a>, <a href="#">Bar</a>],
+    children: [
+      <a key="foo" href="#">
+        Foo
+      </a>,
+      <a key="bar" href="#">
+        Bar
+      </a>,
+    ],
   },
 };
