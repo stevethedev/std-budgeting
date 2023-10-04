@@ -1,0 +1,17 @@
+@import "../../styles/layout";
+
+.default {
+  min-height: 100vh;
+}
+
+.header {
+  flex: 0;
+}
+
+.content {
+  flex: 1;
+}
+
+.footer {
+  flex: 0;
+}
