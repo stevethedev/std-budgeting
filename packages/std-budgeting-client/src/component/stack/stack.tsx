@@ -23,11 +23,11 @@ export interface Props<
 export function Stack<
   T extends ComponentType<unknown> | keyof ReactHTML = "div",
 >({
+  children,
   isVertical = false,
   gap = 2,
-  as,
   className,
-  children,
+  as,
   ...props
 }: Props<T>): ReactElement<T> {
   const style = cssProperties({ "--stack-gap": `var(--theme--size--${gap})` });
