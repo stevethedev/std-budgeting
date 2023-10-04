@@ -7,6 +7,11 @@ on:
 jobs:
   changesets:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      issues: write
+      pull-requests: write
+      packages: write
     steps:
       - uses: actions/checkout@v2
         with:
