@@ -10,7 +10,40 @@ jobs:
   mark-auto-merge:
     runs-on: ubuntu-latest
     steps:
+      # Check if this is a dependabot PR
+      - name: Check if this is a dependabot PR
+        id: is_dependabot
+        run: echo "::set-output name=is_dependabot::$(jq -r '.pull_request.head.repo.full_name | contains("dependabot")' $GITHUB_EVENT_PATH)"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      # If this isn't a dependabot PR, then check for changesets
+      - uses: actions/checkout@v2
+        if: ${{ steps.is_dependabot.outputs.is_dependabot == 'false' }}
+        with:
+          fetch-depth: 0
+
+      - if: ${{ steps.is_dependabot.outputs.is_dependabot == 'false' }}
+        run: git pull --force --no-tags origin main:main
+
+      - uses: actions/setup-node@v3
+        if: ${{ steps.is_changeset.outputs.is_dependabot == 'false' }}
+        with:
+          node-version: 18.x
+
+      - name: Install dependencies
+        if: ${{ steps.is_changeset.outputs.is_dependabot == 'false' }}
+        run: npm ci
+
+      - name: Check if this is a changeset PR
+        id: is_changeset
+        if: ${{ steps.is_dependabot.outputs.is_dependabot == 'false' }}
+        run: echo "::set-output name=is_changeset::$(jq -r '.pull_request.title | contains("Version Packages")' $GITHUB_EVENT_PATH)"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Enable auto-merge for PRs
+        if: ${{ steps.is_changeset.outputs.is_changeset == 'true' || steps.is_dependabot.outputs.is_dependabot == 'true' }}
         run: gh pr merge --auto --merge "$PR_URL"
         env:
           PR_URL: ${{ github.event.pull_request.html_url }}
