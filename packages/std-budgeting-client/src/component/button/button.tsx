@@ -10,6 +10,8 @@ export interface Props {
   variant?: Variant;
   className?: string;
   children: ReactNode;
+  isUnderline?: boolean;
+  isSelected?: boolean;
 
   onPress?: (e: MouseEvent<HTMLButtonElement> | KeyboardEvent) => void;
 }
@@ -20,11 +22,17 @@ export const Button: FC<Props> = ({
   className = "",
   onPress,
   children,
+  isUnderline = false,
+  isSelected = false,
   ...props
 }) => {
   const classString = getClassName([
     styles.button,
     className,
+    {
+      [styles.underline]: isUnderline,
+      [styles.selected]: isSelected,
+    },
     {
       [styles.danger]: variant === Variant.Danger,
       [styles.ghost]: variant === Variant.Ghost,
@@ -42,7 +50,7 @@ export const Button: FC<Props> = ({
       disabled={isDisabled}
       onClick={onPress}
     >
-      {children || props.title}
+      {children ?? props.title}
     </button>
   );
 };

@@ -49,6 +49,29 @@
       var(--theme--color--button-text-disabled)
     );
   }
+
+  &.underline {
+    background-color: var(--theme--color--transparent);
+    color: var(--theme--color--text, var(--theme--color--button-background));
+    border-radius: var(--theme--size--0);
+    box-shadow: var(--theme--size--0) var(--theme--size--0)
+      var(--theme--size--0) var(--theme--size--0)
+      var(
+        --theme--color--#{$color}-background,
+        var(--theme--color--button-background)
+      )
+      inset;
+
+    &.selected {
+      box-shadow: var(--theme--size--0) calc(-1 * var(--theme--size--1))
+        var(--theme--size--0) var(--theme--size--0)
+        var(
+          --theme--color--#{$color}-background,
+          var(--theme--color--button-background)
+        )
+        inset;
+    }
+  }
 }
 
 .button {
