@@ -10,13 +10,15 @@ export class EventBus implements IEventBus {
   }
 
   public on<T>(event: string, callback: (payload: T) => void): EventHandle<T> {
-    this.eventEmitter.on(event, callback);
-
     const on = () => {
       this.eventEmitter.on(event, callback);
     };
     const off = () => this.eventEmitter.off(event, callback);
-    const emit = (payload: T) => this.eventEmitter.emit(event, payload);
+    const emit = (payload: T) => {
+      this.eventEmitter.emit(event, payload);
+    };
+
+    on();
 
     return { on, off, emit };
   }

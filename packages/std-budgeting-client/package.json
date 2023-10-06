@@ -11,5 +11,8 @@
   ],
   "jest": {
     "testEnvironment": "jsdom"
+  },
+  "dependencies": {
+    "@stevethedev/std-budgeting-events": "*"
   }
 }
