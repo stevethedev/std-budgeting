@@ -1,5 +1,5 @@
 ---
-"std-budgeting-client": patch
+"@stevethedev/std-budgeting-client": patch
 ---
 
 Update labels to support the htmlFor property

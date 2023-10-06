@@ -1,5 +1,5 @@
 ---
-"std-budgeting-client": patch
+"@stevethedev/std-budgeting-client": patch
 ---
 
 Correct spacing and sizing on default layout

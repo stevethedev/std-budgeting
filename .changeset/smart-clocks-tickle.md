@@ -1,5 +1,5 @@
 ---
-"std-budgeting-client": minor
+"@stevethedev/std-budgeting-client": minor
 ---
 
 Added tab-control elements
