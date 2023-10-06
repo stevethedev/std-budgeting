@@ -1,0 +1,20 @@
+{
+  "name": "@stevethedev/std-budgeting-events",
+  "version": "0.0.0",
+  "main": "src/index",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stevethedev/std-budgeting.git"
+  },
+  "authors": [
+    {
+      "name": "Steven Jimenez",
+      "email": "stevenmjimenez@gmail.com"
+    }
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/stevethedev/std-budgeting/issues"
+  },
+  "homepage": "https://github.com/stevethedev/std-budgeting#readme"
+}
