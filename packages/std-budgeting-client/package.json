@@ -1,5 +1,5 @@
 {
-  "name": "std-budgeting-client",
+  "name": "@stevethedev/std-budgeting-client",
   "version": "0.0.0",
   "description": "Web-client for the std-budgeting project",
   "license": "MIT",

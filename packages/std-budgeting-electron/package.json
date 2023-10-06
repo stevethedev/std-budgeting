@@ -1,5 +1,5 @@
 {
-  "name": "std-budgeting-electron",
+  "name": "@stevethedev/std-budgeting-electron",
   "version": "0.0.0",
   "description": "Electron system for std-budgeting project",
   "license": "MIT",

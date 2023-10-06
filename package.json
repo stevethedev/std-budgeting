@@ -1,5 +1,5 @@
 {
-  "name": "std-budgeting",
+  "name": "@stevethedev/std-budgeting",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
