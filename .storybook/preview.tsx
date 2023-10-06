@@ -1,5 +1,5 @@
 import type { Preview } from "@storybook/react";
-import { Theme } from "std-budgeting-client/src/theme/default";
+import { Theme } from "@stevethedev/std-budgeting-client/src/theme/default";
 
 const preview: Preview = {
   parameters: {
