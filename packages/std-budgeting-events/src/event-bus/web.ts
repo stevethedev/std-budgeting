@@ -11,7 +11,9 @@ export class EventBus implements IEventBus {
     const myCallback = (event: CustomEvent<T>) => callback(event.detail);
     this.eventEmitter.addEventListener(event, myCallback);
 
-    const on = () => void this.on(event, callback);
+    const on = () => {
+      this.on(event, callback);
+    };
     const off = () => this.eventEmitter.removeEventListener(event, myCallback);
     const emit = (payload: T) => this.emit(event, payload);
 
