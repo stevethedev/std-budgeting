@@ -1,0 +1,16 @@
+.currency {
+  white-space: nowrap;
+  text-align: right;
+
+  &::before {
+    content: attr(data-prefix);
+  }
+
+  &::after {
+    content: attr(data-suffix);
+  }
+}
+
+.block {
+  display: block;
+}

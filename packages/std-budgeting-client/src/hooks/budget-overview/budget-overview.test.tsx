@@ -12,11 +12,16 @@ describe("useBudgetOverview", () => {
     const onBudgetOverviewRequest = jest.fn();
     eventBus.on("budget-overview:request", onBudgetOverviewRequest);
     const query: BudgetOverviewRequestPayload = {
-      foo: {
-        field: "foo",
-        operator: "eq",
-        value: "bar",
-      },
+      select: [
+        {
+          name: "foo",
+          filter: {
+            field: "foo",
+            operator: "eq",
+            value: "bar",
+          },
+        },
+      ],
     };
 
     const { result } = renderHook(() => useBudgetOverview(query), {
@@ -43,7 +48,18 @@ describe("useBudgetOverview", () => {
 
     const { result } = renderHook(
       () => {
-        const { value } = useBudgetOverview({});
+        const { value } = useBudgetOverview({
+          select: [
+            {
+              name: "foo",
+              filter: {
+                field: "foo",
+                operator: "eq",
+                value: "bar",
+              },
+            },
+          ],
+        });
         return value;
       },
       {

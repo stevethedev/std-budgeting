@@ -1,0 +1,61 @@
+@import "../../styles/layout";
+
+.table {
+  box-sizing: border-box;
+  display: table;
+  width: 100%;
+  border-collapse: separate;
+  border: 1px solid;
+  border-bottom-width: 3px;
+  border-spacing: 0;
+
+  border-radius: var(--theme--size--border-radius)
+    var(--theme--size--border-radius) 0 0;
+  border-color: var(--theme--color--primary);
+
+  .caption {
+    box-sizing: border-box;
+    display: table-caption;
+    font-size: var(--theme--font-size--small);
+  }
+
+  .head {
+    box-sizing: border-box;
+    display: table-header-group;
+
+    background-color: var(--theme--color--primary-background);
+    color: var(--theme--color--primary-text);
+  }
+
+  .body {
+    box-sizing: border-box;
+    display: table-row-group;
+
+    .row:nth-child(even) {
+      background-color: transparent;
+    }
+
+    .row:nth-child(odd) {
+      background-color: var(--theme--color--black-100);
+    }
+  }
+
+  .foot {
+    box-sizing: border-box;
+    display: table-footer-group;
+
+    background-color: var(--theme--color--primary);
+  }
+
+  .row {
+    box-sizing: border-box;
+    display: table-row;
+  }
+
+  .cell {
+    box-sizing: border-box;
+    display: table-cell;
+
+    padding: var(--theme--size--3) var(--theme--size--3);
+  }
+}

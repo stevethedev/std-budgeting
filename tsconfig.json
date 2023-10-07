@@ -10,6 +10,7 @@
     "target": "ESNext",
     "sourceMap": true,
     "moduleResolution": "NodeNext",
+    "skipLibCheck": true,
     "noImplicitReturns": true,
     "noImplicitThis": true,
     "strictNullChecks": true,

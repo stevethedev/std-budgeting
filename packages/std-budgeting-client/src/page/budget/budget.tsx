@@ -1,6 +1,8 @@
 import { FC, useState } from "react";
 import { Default } from "../../layout/default";
 import { Tab, TabControl } from "../../container/tab-control";
+import { useBudgetOverview } from "../../hooks/budget-overview";
+import { BudgetOverview } from "../../container/budget-overview";
 
 enum TabId {
   Overview = "overview",
@@ -10,11 +12,34 @@ enum TabId {
 
 export const Budget: FC = () => {
   const [selectedId, onSelectId] = useState<TabId>(TabId.Overview);
+
+  const { value: budgetOverview } = useBudgetOverview({
+    select: [
+      {
+        name: "Income",
+        filter: {
+          field: "category",
+          operator: "eq",
+          value: "income",
+        },
+      },
+      {
+        name: "Expenses",
+        filter: {
+          field: "category",
+          operator: "eq",
+          value: "expense",
+        },
+      },
+    ],
+  });
+
   return (
     <Default>
       <TabControl<TabId> selectedId={selectedId} onSelectId={onSelectId}>
         <Tab key={"overview"} id={TabId.Overview} label="Overview">
-          Overview
+          <b>Overview</b>
+          {budgetOverview === null || <BudgetOverview data={budgetOverview} />}
         </Tab>
         <Tab key="income" id={TabId.Income} label="Income">
           Income

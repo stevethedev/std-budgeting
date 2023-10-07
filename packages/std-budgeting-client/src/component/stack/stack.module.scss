@@ -4,6 +4,7 @@
   @include block;
 
   gap: var(--stack-gap, var(--theme--size--2));
+  width: 100%;
 
   &.horizontal {
     flex-direction: row;

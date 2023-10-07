@@ -60,7 +60,7 @@ export function Tab<ID extends string | number>({
   ...props
 }: TabProps<ID>): ReactComponentElement<typeof Stack> {
   return (
-    <Stack data-label={label} data-id={id} key={key} {...props}>
+    <Stack isVertical data-label={label} data-id={id} key={key} {...props}>
       {children}
     </Stack>
   );
