@@ -52,14 +52,12 @@ export const useEventListener = <T extends keyof EventRegistry>(
 ): EventHandle<EventRegistry[T]> => {
   const eventBus = useEventBus();
 
-  return useMemo(
-    () => eventBus.on(event, callback),
-    [eventBus, event, callback],
-  );
+  return useMemo(() => {
+    return eventBus.on(event, callback);
+  }, [eventBus, event, callback]);
 };
 
 export const Provider: FC<Props> = ({ children, eventBus }) => {
-  console.log("Event bus provider", eventBus);
   const context: EventBus = useMemo(
     () => eventBus ?? new EventBus(),
     [eventBus],

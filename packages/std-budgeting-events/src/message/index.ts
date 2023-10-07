@@ -1,4 +1,8 @@
-export * from "./budget-overview";
+export {
+  RequestPayload as BudgetOverviewRequestPayload,
+  ResponsePayload as BudgetOverviewResponsePayload,
+  Spread as BudgetOverviewSpread,
+} from "./budget-overview";
 
 export interface MessageDefinition<Name, Payload> {
   name: Name;
