@@ -1,3 +1,5 @@
+@use "sass:math";
+
 @function interpolate-color($start, $end, $percentage) {
   $r1: red($start);
   $g1: green($start);
@@ -16,9 +18,9 @@
 
 @mixin generate-colors($name, $start, $end, $steps: 9) {
   @for $i from 1 through $steps {
-    $num: $i * 100;
-    $percentage: $i * 100 / $steps;
-    --theme--color--#{$name}-#{$num}: #{interpolate-color(
+    $num: math.div($i, 0.01);
+    $percentage: math.div($i * 100, $steps);
+    --theme--color--#{"" + $name}-#{"" + $num}: #{interpolate-color(
         $start,
         $end,
         $percentage
@@ -27,16 +29,16 @@
 }
 
 @mixin theme-colors {
-  @include generate-colors(red, #ffebee, #b71c1c);
-  @include generate-colors(orange, #fff3e0, #e65100);
-  @include generate-colors(yellow, #fff9c4, #a34c00);
-  @include generate-colors(green, #e8f5e9, #1b5e20);
-  @include generate-colors(blue, #e3f2fd, #0d47a1);
-  @include generate-colors(indigo, #e8eaf6, #1a237e);
-  @include generate-colors(violet, #f3e5f5, #4a148c);
-  @include generate-colors(pink, #fce4ec, #880e4f);
-  @include generate-colors(cyan, #e0f7fa, #006064);
-  @include generate-colors(magenta, #f8bbd0, #880e4f);
+  @include generate-colors("red", #ffebee, #b71c1c);
+  @include generate-colors("orange", #fff3e0, #e65100);
+  @include generate-colors("yellow", #fff9c4, #a34c00);
+  @include generate-colors("green", #e8f5e9, #1b5e20);
+  @include generate-colors("blue", #e3f2fd, #0d47a1);
+  @include generate-colors("indigo", #e8eaf6, #1a237e);
+  @include generate-colors("violet", #f3e5f5, #4a148c);
+  @include generate-colors("pink", #fce4ec, #880e4f);
+  @include generate-colors("cyan", #e0f7fa, #006064);
+  @include generate-colors("magenta", #f8bbd0, #880e4f);
 
   --theme--color--black: #000;
   --theme--color--white: #fff;

@@ -10,7 +10,7 @@ import { EventBus } from "@stevethedev/std-budgeting-events";
 
 describe("Event Provider", () => {
   it("renders children", async () => {
-    await render(
+    render(
       <Provider>
         <div>Child component</div>
       </Provider>,
@@ -23,7 +23,7 @@ describe("Event Provider", () => {
     const callback = jest.fn();
     const payload = Symbol();
 
-    await renderHook(
+    renderHook(
       () => {
         const eventBus = useEventBus();
         eventBus.on("test", callback);
@@ -39,7 +39,7 @@ describe("Event Provider", () => {
     const callback = jest.fn();
     const payload = Symbol();
 
-    await renderHook(
+    renderHook(
       () => {
         const dispatch = useEventDispatch("__test");
         const eventBus = useEventBus();
@@ -56,7 +56,7 @@ describe("Event Provider", () => {
     const callback = jest.fn();
     const payload = [Symbol("first"), Symbol("second"), Symbol("third")];
 
-    await renderHook(
+    renderHook(
       () => {
         const dispatch = useEventDispatch("__test");
         const { on, off } = useEventListener("__test", callback);
@@ -92,7 +92,7 @@ describe("Event Provider", () => {
 
     eventBus.on("budget-overview:request", requestCallback);
 
-    await renderHook(
+    renderHook(
       () => {
         const dispatchRequest = useEventDispatch("budget-overview:request");
         const { off } = useEventListener(
@@ -101,11 +101,16 @@ describe("Event Provider", () => {
         );
 
         dispatchRequest({
-          foo: {
-            field: "budgeted",
-            operator: "eq",
-            value: "0",
-          },
+          select: [
+            {
+              name: "foo",
+              filter: {
+                field: "budgeted",
+                operator: "eq",
+                value: "0",
+              },
+            },
+          ],
         });
 
         off();
