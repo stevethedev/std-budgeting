@@ -7,6 +7,16 @@ import {
 } from "@stevethedev/std-budgeting-events";
 import { Provider as EventProvider } from "../../provider/events";
 
+const getCryptoNumber = (max: number): number => {
+  const u32max = 0xffffffff - (0xffffffff % max);
+  const u32 = new Uint32Array(1);
+  do {
+    window.crypto.getRandomValues(u32);
+  } while (u32[0] >= u32max);
+
+  return u32[0] % max;
+};
+
 export default {
   title: "Page/Budget",
   component: Budget,
@@ -22,8 +32,8 @@ export default {
           const response: BudgetOverviewResponsePayload = {
             values: params.select.map((s) => ({
               name: s.name,
-              budgeted: ((Math.random() * 100000) | 0) / 100,
-              actual: ((Math.random() * 100000) | 0) / 100,
+              budgeted: getCryptoNumber(100000) / 100,
+              actual: getCryptoNumber(100000) / 100,
             })),
           };
           eventBus.emit("budget-overview:response", response);
