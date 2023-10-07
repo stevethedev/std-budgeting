@@ -49,18 +49,16 @@ export interface TabProps<ID extends string | number>
   id: ID;
   label: string;
   children: ReactNode;
-  key: string;
 }
 
 export function Tab<ID extends string | number>({
   id,
   label,
-  key,
   children,
   ...props
 }: TabProps<ID>): ReactComponentElement<typeof Stack> {
   return (
-    <Stack isVertical data-label={label} data-id={id} key={key} {...props}>
+    <Stack isVertical data-label={label} data-id={id} {...props}>
       {children}
     </Stack>
   );
