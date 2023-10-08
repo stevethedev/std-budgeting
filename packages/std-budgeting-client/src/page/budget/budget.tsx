@@ -11,7 +11,7 @@ enum TabId {
 }
 
 export const Budget: FC = () => {
-  const [selectedId, onSelectId] = useState<TabId>(TabId.Overview);
+  const [selectedId, setSelectId] = useState<TabId>(TabId.Overview);
 
   const { value: budgetOverview } = useBudgetOverview({
     select: [
@@ -36,7 +36,7 @@ export const Budget: FC = () => {
 
   return (
     <Default>
-      <TabControl<TabId> selectedId={selectedId} onSelectId={onSelectId}>
+      <TabControl<TabId> selectedId={selectedId} onSelectId={setSelectId}>
         <Tab key={"overview"} id={TabId.Overview} label="Overview">
           <b>Overview</b>
           {budgetOverview === null || <BudgetOverview data={budgetOverview} />}
