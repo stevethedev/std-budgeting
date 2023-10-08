@@ -5,7 +5,7 @@ import { Button, Variant } from "../../component/button";
 export interface Props<ID extends string | number> {
   selectedId: ID;
   onSelectId: (id: ID) => void;
-  children: Array<ReactComponentElement<typeof Tab<ID>>>;
+  children: ReadonlyArray<ReactComponentElement<typeof Tab<ID>>>;
   variant?: Variant;
   isVertical?: boolean;
 }
@@ -17,7 +17,7 @@ export function TabControl<ID extends string | number>({
   variant = Variant.Primary,
   isVertical = true,
   ...props
-}: Props<ID>): ReactComponentElement<typeof Stack> {
+}: Readonly<Props<ID>>): ReactComponentElement<typeof Stack> {
   const meta = children.map(({ props: { label, id }, key }) => ({
     label,
     id,
@@ -56,7 +56,7 @@ export function Tab<ID extends string | number>({
   label,
   children,
   ...props
-}: TabProps<ID>): ReactComponentElement<typeof Stack> {
+}: Readonly<TabProps<ID>>): ReactComponentElement<typeof Stack> {
   return (
     <Stack isVertical data-label={label} data-id={id} {...props}>
       {children}
