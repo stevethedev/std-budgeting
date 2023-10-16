@@ -88,7 +88,7 @@
     "typescript": "^5.2.2",
     "typescript-plugin-css-modules": "^5.0.1",
     "webpack-cli": "^5.1.4",
-    "webpack-merge": "^5.9.0",
+    "webpack-merge": "^5.10.0",
     "workbox-webpack-plugin": "^7.0.0"
   }
 }
